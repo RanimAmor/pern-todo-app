@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deploy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: app-deploy
+  template:
+    metadata:
+      labels: 
+        app: app-deploy     
+    spec:
+      containers:
+       - name: private-reg-container
+         image: ranimamor/pern-todo-app:latest
+         ports:
+          - containerPort: 4000
+      
+
+

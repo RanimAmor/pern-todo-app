@@ -1,0 +1,26 @@
+version: "3"
+services: 
+  app:
+    container_name: app
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - 4000:4000
+  postgres: 
+    container_name: postgres
+    image: postgres:10
+    ports:
+      - 8000:5432
+    volumes: 
+      - ./postgresdata:/var/lib/postgresql/data
+      - ./src/migrations/dbinit.sql:/docker-entrypoint-initdb.d/dbinit.sql
+    restart: always
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "perntodo"
+
+    
+    
+

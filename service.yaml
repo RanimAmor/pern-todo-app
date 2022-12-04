@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: app-deploy
+    pod-template-hash: b4bcc767f
+  name: app1
+spec:
+  ports:
+  - port: 4000
+    protocol: TCP
+    targetPort: 4000
+  selector:
+    app: app-deploy
+    pod-template-hash: b4bcc767f
+  type: NodePort
+status:
+  loadBalancer: {}
+
